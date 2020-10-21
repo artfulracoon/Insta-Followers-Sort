@@ -1,6 +1,7 @@
 import os
 import time
 
+
 def alphanumerical_sort(name):
     text = open(name, "r", encoding="utf8")
     lines = sorted(text.readlines())
@@ -91,8 +92,7 @@ except FileExistsError:
     os.chdir(folder_path)
     os.rename("sorted.txt", path_to_move)
 
-input("Finished successfully.\n\nYou can find the output folder in the same path the .py file is.\n\n"
-    "Inside the InstaSort folder, you can find the following and followers lists and a folder named sorted.\n\n"
-    "Check the sorted folder to find a list of who does not follow you back.\n\n"
-    "YOU CAN NOW CLOSE THIS WINDOW.")
-
+input("Finished successfully.\n\nYou can find the output folder here:\n\n" + str(folder_path) +
+      "\n\nInside the InstaSort folder, you can find the following and followers lists and a folder named sorted.\n\n"
+      "Check the sorted folder to find a list of who does not follow you back.\n\n"
+      "YOU CAN NOW CLOSE THIS WINDOW.")
