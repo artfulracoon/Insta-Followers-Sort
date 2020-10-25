@@ -1,6 +1,6 @@
 import os
 import time
-
+import webbrowser
 
 def alphanumerical_sort(name):
     text = open(name, "r", encoding="utf8")
@@ -46,12 +46,16 @@ folder_path_sorted = path
 
 os.chdir(folder_path)
 
-print("\nPlease enter ACCOUNTS FOLLOWING YOU data here: \n\nhttps://www.instagram.com/accounts/access_tool/accounts_following_you \n\nPRESS ENTER TWO TIMES AFTER PASTING CONTENTS!")
+print("\nPlease enter ACCOUNTS FOLLOWING YOU data here: \n\nhttps://www.instagram.com/accounts/access_tool/accounts_following_you \n\nPRESS ENTER TWO TIMES AFTER PASTING CONTENTS! \n\nOpening in browser...")
+time.sleep(1.5)
+webbrowser.open('https://www.instagram.com/accounts/access_tool/accounts_following_you', new=1, autoraise=True)
 data_to_text("followers.txt")
 os.system('cls')
 print("Input successful. Generating input for ACCOUNTS YOU FOLLOW.\n")
 time.sleep(1.5)
-print("\nPlease enter ACCOUNTS YOU FOLLOW data here: \n\nhttps://www.instagram.com/accounts/access_tool/accounts_you_follow \n\nPRESS ENTER TWO TIMES AFTER PASTING CONTENTS!")
+print("\nPlease enter ACCOUNTS YOU FOLLOW data here: \n\nhttps://www.instagram.com/accounts/access_tool/accounts_you_follow \n\nPRESS ENTER TWO TIMES AFTER PASTING CONTENTS! \n\nOpening in browser...")
+time.sleep(1.5)
+webbrowser.open('https://www.instagram.com/accounts/access_tool/accounts_you_follow', new=1, autoraise=True)
 data_to_text("following.txt")
 os.system('cls')
 print("Input successful. Continuing...\n")
