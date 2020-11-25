@@ -2,6 +2,7 @@ import os
 import time
 import webbrowser
 
+
 def alphanumerical_sort(name):
     text = open(name, "r", encoding="utf8")
     lines = sorted(text.readlines())
@@ -10,6 +11,10 @@ def alphanumerical_sort(name):
     for word in lines:
         sorteded.write(word)
     sorteded.close()
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def data_to_text(name):
@@ -31,13 +36,21 @@ def data_to_text(name):
 
 
 path = os.getcwd()
-path = path + r"\InstaSort"
+
+if os.name == 'nt':
+    path = path + r"\InstaSort"
+else:
+    path += r"/InstaSort"
+
 try:
     os.mkdir(path)
 except FileExistsError:
-    print("InstaSort folder on Desktop exists. Continuing.\n")
+    print("InstaSort folder on " + path + " exists. Continuing.\n")
 folder_path = path
-path = path + r"\sorted"
+if os.name == 'nt':
+    path = path + r"\sorted"
+else:
+    path += r"/sorted"
 try:
     os.mkdir(path)
 except FileExistsError:
@@ -48,16 +61,18 @@ os.chdir(folder_path)
 
 print("\nPlease enter ACCOUNTS FOLLOWING YOU data here: \n\nhttps://www.instagram.com/accounts/access_tool/accounts_following_you \n\nPRESS ENTER TWO TIMES AFTER PASTING CONTENTS! \n\nOpening in browser...")
 time.sleep(1.5)
-webbrowser.open('https://www.instagram.com/accounts/access_tool/accounts_following_you', new=1, autoraise=True)
+webbrowser.open(
+    'https://www.instagram.com/accounts/access_tool/accounts_following_you', new=1, autoraise=True)
 data_to_text("followers.txt")
-os.system('cls')
+clear()
 print("Input successful. Generating input for ACCOUNTS YOU FOLLOW.\n")
 time.sleep(1.5)
 print("\nPlease enter ACCOUNTS YOU FOLLOW data here: \n\nhttps://www.instagram.com/accounts/access_tool/accounts_you_follow \n\nPRESS ENTER TWO TIMES AFTER PASTING CONTENTS! \n\nOpening in browser...")
 time.sleep(1.5)
-webbrowser.open('https://www.instagram.com/accounts/access_tool/accounts_you_follow', new=1, autoraise=True)
+webbrowser.open(
+    'https://www.instagram.com/accounts/access_tool/accounts_you_follow', new=1, autoraise=True)
 data_to_text("following.txt")
-os.system('cls')
+clear()
 print("Input successful. Continuing...\n")
 time.sleep(1.5)
 
@@ -86,7 +101,11 @@ followers_sorted.close()
 if not os.path.exists(folder_path_sorted):
     os.mkdir(folder_path_sorted)
 
-path_to_move = folder_path_sorted + r"\sorted.txt"
+if os.name == 'nt':
+    path_to_move = folder_path_sorted + r"\sorted.txt"
+else:
+    path_to_move = folder_path_sorted + r"/sorted.txt"
+
 
 try:
     os.rename("sorted.txt", path_to_move)
